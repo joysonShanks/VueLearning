@@ -1,0 +1,39 @@
+v-once --> rendered only once
+v-html --> for binding html text as html
+v-bind --> since mustache can not be used inside html tags
+v-if --> true then tag is displayed
+v-bind:href --> takes argument
+
+modifiers
+v-on:submit.prevent --> calls event.preventDefault()
+
+short hands for v-bind and v-on
+<!-- full syntax -->
+<a v-bind:href="url"> ... </a>
+
+<!-- shorthand -->
+<a :href="url"> ... </a>
+
+<!-- full syntax -->
+<a v-on:click="doSomething"> ... </a>
+
+<!-- shorthand -->
+<a @click="doSomething"> ... </a>
+
+computed property:
+
+{{ reverseMessage }}
+
+computed : {
+	reverseMessage: function() {
+		return this.message.split('').reverse().join('')
+	}
+}
+
+This is possible with vue
+
+<h1 v-if="ok === Y">Yes</h1>
+<h1 v-else-if="ok === N">No<h1>
+<h1 v-else>Undefined</h1>
+
+
