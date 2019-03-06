@@ -1,11 +1,20 @@
 <template>
     <div class="todo">
-        <div class="todo-title">
-            <input style="width:100%;" type="text" placeholder="TODO Title"/>
-        </div>
-        <div class="todo-items" v-for="checkList in checkLists" :key="checkList.id">
-            <label :for="checkList.id" v-bind:class="{ checked: checkList.isCompleted }"><input :id="checkList.id" type="checkbox" name="todo-checkbox" @click="checkItem(checkList.id)"/> {{checkList.name}}</label>
-        </div>
+        <form id="signup-form" @submit.prevent="processForm">
+            <v-container grid-list-xl>
+                <v-flex xs12 sm6 md12>
+                    <v-text-field style="width:100%;" label="TODO Title" name="title" v-model="title" outline></v-text-field>
+                </v-flex>
+                <div v-for="checkList in checkLists" :key="checkList.id">
+                    <v-flex xs12 sm6 md12>
+                        <v-checkbox name="checkLists" v-bind:class="{ 'todo-checked': checkList.isCompleted }" :label="checkList.name" @click="checkItem(checkList.id)"></v-checkbox>
+                    </v-flex>
+                </div>
+                <v-btn color="red" style="width:100%;" type="submit" dark>
+                    Submit
+                </v-btn>
+            </v-container>
+        </form>
     </div>
 </template>
 
@@ -19,15 +28,19 @@ export default {
                    entry.isCompleted = !entry.isCompleted;
                }
             })
+        },
+        processForm() {
+            console.log({ title: this.title, checkLists: this.checkLists })
         }
     },
     data: function () {
         return {
+            title: '',
             checkLists : [
                 { name: 'Get Milk', id: '1', isCompleted: false },
-                { name: 'Get Suger', id: '2', isCompleted: false},
-                { name: 'Fix Water Tap', id: '3', isCompleted: false},
-                { name: 'Pet the cat', id: '4', isCompleted: false}
+                { name: 'Get Suger', id: '2', isCompleted: false },
+                { name: 'Fix Water Tap', id: '3', isCompleted: false },
+                { name: 'Pet the cat', id: '4', isCompleted: false }
             ]
         }
     }
@@ -48,8 +61,16 @@ export default {
     left:auto;
     margin-top: 10px;
 }
-.checked {
+.todo-checked {
     text-decoration: line-through;
+}
+.todo-submit {
+    left:auto;
+    margin-top: 10px;
+}
+.v-input--selection-controls {
+    margin:0px;
+    padding: 0px;
 }
 </style>
 

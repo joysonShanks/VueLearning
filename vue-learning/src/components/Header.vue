@@ -9,7 +9,7 @@
 
 <script>
 export default {
-    name: 'header',
+    name: 'todo-header',
     props: {
         author: String
     }

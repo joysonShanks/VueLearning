@@ -6,21 +6,24 @@
       <li><router-link to="/post/2">/post/2</router-link></li>
       <li><router-link to="/post/3">/post/3</router-link></li>
     </ul> -->
-    <Header author='Joyson'></Header>
+    <TodoHeader author='Joyson'></TodoHeader>
     <router-view class="view"></router-view>
-    <Footer author='Joyson'></Footer>
+    <TodoFooter author='Joyson'></TodoFooter>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Vuetify from 'vuetify'
+
 import Post from './components/Post.vue'
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import TodoHeader from './components/Header.vue'
+import TodoFooter from './components/Footer.vue'
 import Todo from './components/Todo.vue'
 
 Vue.use(VueRouter)
+Vue.use(Vuetify)
 
 const router = new VueRouter({
   mode: 'history',
@@ -35,8 +38,8 @@ export default {
   name: 'app',
   router,
   components: {
-    Header,
-    Footer
+    TodoHeader,
+    TodoFooter
   }
 }
 </script>
